@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ordenação Paralela — Single-thread vs Multithread (Web Workers)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Comparação Visual: Merge Sort Single-thread vs Multithread</h1>
+    <p class="subtitulo">
+      Trabalho Prático — Programação Paralela e Distribuída · JavaScript + Web Workers
+    </p>
+  </header>
+
+  <main>
+    <section class="painel-controles">
+      <div class="campo">
+        <label for="tamanho-vetor">Quantidade de elementos</label>
+        <input type="number" id="tamanho-vetor" value="100" min="2" step="1" />
+      </div>
+
+      <div class="campo">
+        <label for="num-workers">Quantidade de workers</label>
+        <select id="num-workers">
+          <option value="2">2</option>
+          <option value="4" selected>4</option>
+          <option value="8">8</option>
+        </select>
+      </div>
+
+      <div class="campo info-modo">
+        <span>Modo atual:</span>
+        <strong id="modo-atual">—</strong>
+      </div>
+
+      <div class="botoes">
+        <button id="btn-gerar">🔀 Gerar vetor aleatório</button>
+        <button id="btn-comparar" class="destaque">▶️ Executar comparação</button>
+        <button id="btn-single">1️⃣ Apenas single-thread</button>
+        <button id="btn-multi">🧵 Apenas multithread</button>
+        <button id="btn-limpar" class="secundario">🗑️ Limpar / reiniciar</button>
+      </div>
+
+      <p id="status" class="status">Pronto. Gere um vetor para começar.</p>
+    </section>
+
+    <section class="painel-visualizacao">
+      <div class="coluna">
+        <h2>Single-thread <span class="tag tag-single">1 worker</span></h2>
+        <div id="barras-single" class="area-barras"></div>
+      </div>
+
+      <div class="coluna">
+        <h2>Multithread <span class="tag tag-multi">N workers</span></h2>
+        <div id="barras-multi" class="area-barras"></div>
+      </div>
+    </section>
+
+    <section class="painel-resultados">
+      <h2>Resultados</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Tamanho do vetor</th>
+            <th>Workers</th>
+            <th>Tempo single-thread</th>
+            <th>Tempo multithread</th>
+            <th>Speed-up</th>
+            <th>Eficiência</th>
+            <th>Correto?</th>
+          </tr>
+        </thead>
+        <tbody id="corpo-tabela"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <p>Trabalho Prático Final — Programação Paralela e Distribuída · Merge Sort com Web Workers</p>
+  </footer>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
